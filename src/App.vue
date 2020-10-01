@@ -15,9 +15,9 @@ export default {
   },
   setup(){
     let teste = ref("teste");
-    function seila(){
-      alert("seila");
-    }
+      function seila(){
+        alert("seila");
+      }
     return {
       teste,
       seila
