@@ -1,18 +1,36 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<v-container>
+  <v-card>
+    <div v-if="pokemon.img">
+    <v-img :src="pokemon.img" ></v-img>
+    </div>
+    <div v-else>
+      Imagem não existe
+    </div>
+    <v-card-title>{{ pokemon.name }}</v-card-title>
+  </v-card>
+</v-container>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld,
+  data() {
+    return {
+      pokemon: {
+        img: '',
+        name: '',
+      },
+    };
+  },
+
+  async mounted() {
+    const resp = await fetch('https://pokeapi.co/api/v2/pokemon/quilava')
+      .then((res) => res.json());
+    this.pokemon.img = resp.sprites.other.['official-artwork'].front_default;
+    this.pokemon.name = resp.name.toUpperCase();
   },
 };
 </script>
