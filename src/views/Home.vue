@@ -1,8 +1,9 @@
 <template>
-  <v-container fluid>
+  <v-container fluid  >
     <v-row>
     <v-col v-for="pokemon in pokemons" :key="pokemon.id" cols="12" lg="2" >
-    <v-card :color="pokemon.type" @click="">
+    <v-card class="shine" elevation="50" :color="types[pokemon.type]"
+    @click="getPokemonDetails($event,pokemon)">
       <div v-if="pokemon.img">
         <v-img :src="pokemon.img" width=250px height="250px" ></v-img>
       </div>
@@ -24,22 +25,24 @@ export default {
 
       pokemons: [],
       types: {
-        fire: 'red lighten-3',
-        dragon: 'vermelho um pouco mais escuro',
-        eletric: 'amarelo',
-        grass: 'verde',
-        water: 'azul',
-        bug: 'verde com outro tom',
-        normal: 'cinza',
-        ice: 'azul mais escuro ou claro seila',
-        fairy: 'roxo ou rosa claro',
-        posion: 'roxo ou rosa escuro',
-        ground: 'amarelo mais escuro ou marrom',
-        fighting: 'algum tom de vermelho',
-        psythic: 'roxo ou rosa',
-        rock: 'cinza ou amarelo',
-        ghost: 'branco',
-        dark: 'roxo ou preto',
+        fire: 'deep-orange darken-2',
+        stell: 'grey lighten-3',
+        // fire: 'yellow darken-3',
+        dragon: 'orange darken-2',
+        electric: 'yellow darken-3',
+        grass: 'green darken-1',
+        water: 'cyan darken-1',
+        bug: 'light-green lighten-3',
+        normal: 'grey lighten-1',
+        ice: 'blue darken-2',
+        fairy: 'pink lighten-2',
+        poison: 'purple darken-3',
+        ground: 'brown darken-1',
+        fighting: 'red lighten-2',
+        psychic: 'deep-purple lighten-2',
+        rock: 'brown lighten-3',
+        ghost: 'grey darken-1',
+        dark: 'blue-grey darken-4',
       },
     };
   },
@@ -51,10 +54,13 @@ export default {
         }).catch((err) => reject(err));
       });
     },
+    getPokemonDetails(event, pokemon) {
+      this.$router.push({ name: 'Pokemon', params: { id: pokemon.id } });
+    },
   },
   async mounted() {
     const req = [];
-    const resp = await fetch('https://pokeapi.co/api/v2/pokemon/').then((res) => res.json());
+    const resp = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=24').then((res) => res.json());
     resp.results.forEach((element) => {
       req.push(this.busca(element.url));
     });
@@ -68,6 +74,8 @@ export default {
       this.pokemons.push(pokemon);
     });
     console.log(this.pokemons);
+    this.$vuetify.theme.dark = true;
+
     // 'const data = await seila.json();
     // this.pokemon.img = el.sprites.other.['official-artwork'].front_default;
     // this.pokemon.name = resp.name.toUpperCase();
@@ -76,3 +84,6 @@ export default {
 
 };
 </script>
+<style scoped>
+
+</style>

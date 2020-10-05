@@ -107,18 +107,6 @@ export default {
       .catch((err) => {
         console.log(err);
       });
-    // let resp = await fetch(
-    //   `https://pokeapi.co/api/v2/pokemon/${this.$route.params.id}`
-    // ).then((res) => res.json());
-    // this.pokemon.img = resp.sprites.other["official-artwork"].front_default;
-    // this.pokemon.name = resp.name.toUpperCase();
-    // this.pokemon.abilities = resp.abilities;
-    // this.pokemon.weight = resp.weight;
-    // this.pokemon.height = resp.height;
-    // resp = await fetch(
-    //   `https://pokeapi.co/api/v2/pokemon-species/${this.$route.params.id}`
-    // ).then((res) => res.json());
-    // this.evolves_from_species = resp.evolves_from_species.name;
   },
 };
 </script>

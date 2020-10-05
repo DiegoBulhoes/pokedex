@@ -1,8 +1,8 @@
 <template>
-  <v-app>
+  <v-app app dark>
     <v-app-bar
       app
-      color="primary"
+      color="red darken-4"
       dark
     >
       <div class="d-flex align-center">
@@ -10,31 +10,14 @@
           alt="Vuetify Logo"
           class="shrink mr-2"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          src="https://img1.gratispng.com/20190127/bqk/kisspng-portable-network-graphics-clip-art-image-illustrat-pokemon-pokmon-pokeball-pokball-pokemongo-5c4e30c63fd559.5942467415486281662615.jpg"
           transition="scale-transition"
           width="40"
         />
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+      POKEDEX
       </div>
 
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
     </v-app-bar>
 
     <v-main>
