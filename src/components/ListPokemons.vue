@@ -52,7 +52,7 @@ export default {
         req.push(this.busca(element.url));
       });
       const data = await Promise.allSettled(req);
-      this.offset += limit;
+      this.offset += itemsPerPage;
       console.log(this.offset);
       data.forEach((el) => {
         const pokemon = {};
