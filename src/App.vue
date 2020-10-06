@@ -1,26 +1,6 @@
 <template>
   <v-app app dark>
-    <v-app-bar
-      app
-      color="red darken-4"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          @click="ListPokemons"
-          alt="ultraball"
-          class="shrink mr-2"
-          contain
-          :src="require('@/assets/ultra-ball.png')"
-          transition="scale-transition"
-          width="40"
-        />
-
-      <span @click="ListPokemons" >POKEDEX</span>
-      </div>
-
-    </v-app-bar>
-
+    <AppBar></AppBar>
     <v-main>
       <router-view></router-view>
     </v-main>
@@ -28,17 +8,12 @@
 </template>
 
 <script>
+import AppBar from '@/components/AppBar.vue';
 
 export default {
   name: 'App',
-
-  data: () => ({
-    //
-  }),
-  methods: {
-    ListPokemons() {
-      this.$router.push({ name: 'Pokedex' });
-    },
+  components: {
+    AppBar,
   },
 };
 </script>

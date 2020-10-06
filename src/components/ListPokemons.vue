@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row>
-    <v-col v-for="pokemon in pokemons" :key="pokemon.id" cols="12" lg="3" >
+    <v-col v-for="pokemon in pokemons" :key="pokemon.id" cols="12" lg="3" sm="4" >
     <v-card  elevation="50" :color="types[pokemon.type]"
     @click="getPokemonDetails($event,pokemon)">
       <div v-if="pokemon.img">
