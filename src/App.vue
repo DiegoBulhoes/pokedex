@@ -7,15 +7,16 @@
     >
       <div class="d-flex align-center">
         <v-img
-          alt="Vuetify Logo"
+          @click="ListPokemons"
+          alt="ultraball"
           class="shrink mr-2"
           contain
-          src="https://img1.gratispng.com/20190127/bqk/kisspng-portable-network-graphics-clip-art-image-illustrat-pokemon-pokmon-pokeball-pokball-pokemongo-5c4e30c63fd559.5942467415486281662615.jpg"
+          :src="require('@/assets/ultra-ball.png')"
           transition="scale-transition"
           width="40"
         />
 
-      POKEDEX
+      <span @click="ListPokemons" >POKEDEX</span>
       </div>
 
     </v-app-bar>
@@ -34,5 +35,10 @@ export default {
   data: () => ({
     //
   }),
+  methods: {
+    ListPokemons() {
+      this.$router.push({ name: 'Pokedex' });
+    },
+  },
 };
 </script>

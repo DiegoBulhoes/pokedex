@@ -1,18 +1,18 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Pokemon from '../views/Pokemon.vue';
-import Home from '../views/Home.vue';
+import Pokedex from '../views/Pokedex.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home,
+    path: '/pokedex',
+    name: 'Pokedex',
+    component: Pokedex,
   },
   {
-    path: '/pokemon/:id',
+    path: '/pokedex/pokemon/:id',
     name: 'Pokemon',
     component: Pokemon,
   },

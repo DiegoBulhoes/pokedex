@@ -1,8 +1,8 @@
 <template>
-  <v-container fluid  >
+  <v-container fluid>
     <v-row>
-    <v-col v-for="pokemon in pokemons" :key="pokemon.id" cols="12" lg="2" >
-    <v-card class="shine" elevation="50" :color="types[pokemon.type]"
+    <v-col v-for="pokemon in pokemons" :key="pokemon.id" cols="12" lg="3" >
+    <v-card  elevation="50" :color="types[pokemon.type]"
     @click="getPokemonDetails($event,pokemon)">
       <div v-if="pokemon.img">
         <v-img :src="pokemon.img" width=250px height="250px" ></v-img>
@@ -19,15 +19,13 @@
 // @ is an alias to /src
 
 export default {
-  name: 'Home',
   data() {
     return {
-
+      offset: 0,
       pokemons: [],
       types: {
         fire: 'deep-orange darken-2',
         stell: 'grey lighten-3',
-        // fire: 'yellow darken-3',
         dragon: 'orange darken-2',
         electric: 'yellow darken-3',
         grass: 'green darken-1',
@@ -47,6 +45,25 @@ export default {
     };
   },
   methods: {
+    async getPokemons(itemsPerPage = 24) {
+      const req = [];
+      const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${this.offset}&&?limit=${itemsPerPage}`).then((res) => res.json());
+      resp.results.forEach((element) => {
+        req.push(this.busca(element.url));
+      });
+      const data = await Promise.allSettled(req);
+      this.offset += limit;
+      console.log(this.offset);
+      data.forEach((el) => {
+        const pokemon = {};
+        pokemon.id = el.value.id;
+        // eslint-disable-next-line
+        pokemon.img = el.value.sprites.other.['official-artwork'].front_default;
+        pokemon.type = el.value.types['0'].type.name;
+        pokemon.name = el.value.name.toUpperCase();
+        this.pokemons.push(pokemon);
+      });
+    },
     busca(url) {
       return new Promise((resolve, reject) => {
         fetch(url).then((res) => {
@@ -54,32 +71,26 @@ export default {
         }).catch((err) => reject(err));
       });
     },
-    getPokemonDetails(event, pokemon) {
+    getPokemonDetails(_event, pokemon) {
       this.$router.push({ name: 'Pokemon', params: { id: pokemon.id } });
     },
-  },
-  async mounted() {
-    const req = [];
-    const resp = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=24').then((res) => res.json());
-    resp.results.forEach((element) => {
-      req.push(this.busca(element.url));
-    });
-    const data = await Promise.allSettled(req);
-    data.forEach((el) => {
-      const pokemon = {};
-      pokemon.id = el.value.id;
-      pokemon.img = el.value.sprites.other.['official-artwork'].front_default;
-      pokemon.type = el.value.types['0'].type.name;
-      pokemon.name = el.value.name.toUpperCase();
-      this.pokemons.push(pokemon);
-    });
-    console.log(this.pokemons);
-    this.$vuetify.theme.dark = true;
+    infiniteScroll() {
+      window.onscroll = () => {
+        const bottomOfWindow = Math.floor(document.documentElement.scrollTop + window.innerHeight)
+        === document.documentElement.offsetHeight;
 
-    // 'const data = await seila.json();
-    // this.pokemon.img = el.sprites.other.['official-artwork'].front_default;
-    // this.pokemon.name = resp.name.toUpperCase();
-    // this.type(resp.types['0'].type.name);
+        if (bottomOfWindow) {
+          console.log('scroll');
+          this.getPokemons(48);
+        }
+      };
+    },
+
+  },
+  mounted() {
+    this.infiniteScroll();
+    this.getPokemons();
+    this.$vuetify.theme.dark = true;
   },
 
 };
