@@ -1,6 +1,12 @@
 <template>
   <v-container fluid>
+       <v-text-field
+       v-model="search"
+      label="Buscar Pokemon"
+      hide-details="auto"
+    ></v-text-field>
     <v-row>
+    <div v-if="pokemonsData.length === 0">Pokemon Não Existe</div>
     <v-col v-for="pokemon in pokemons" :key="pokemon.id" cols="12" lg="3" sm="4" >
     <v-card  elevation="50" :color="types[pokemon.type]"
     @click="getPokemonDetails($event,pokemon)">
@@ -21,8 +27,10 @@
 export default {
   data() {
     return {
+      search: '',
       offset: 0,
-      pokemons: [],
+      pokemonsData: [],
+      debounce: null,
       types: {
         fire: 'deep-orange darken-2',
         stell: 'grey lighten-3',
@@ -44,6 +52,18 @@ export default {
       },
     };
   },
+  computed: {
+    pokemons() {
+      let pokemons = [];
+      pokemons = this.pokemonsData.filter(
+        (pokemon) => pokemon.name.toUpperCase().includes(this.search.toUpperCase()),
+      );
+      if (pokemons.length === 0) {
+        this.getPokemonName(this.search);
+      }
+      return pokemons;
+    },
+  },
   methods: {
     async getPokemons(itemsPerPage = 24) {
       const req = [];
@@ -61,7 +81,7 @@ export default {
         pokemon.img = el.value.sprites.other.['official-artwork'].front_default;
         pokemon.type = el.value.types['0'].type.name;
         pokemon.name = el.value.name.toUpperCase();
-        this.pokemons.push(pokemon);
+        this.pokemonsData.push(pokemon);
       });
     },
     busca(url) {
@@ -73,6 +93,21 @@ export default {
     },
     getPokemonDetails(_event, pokemon) {
       this.$router.push({ name: 'Pokemon', params: { id: pokemon.id } });
+    },
+    async getPokemonName(name) {
+      clearTimeout(this.debounce);
+      this.debounce = setTimeout(async () => {
+        const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`).then((res) => res.json());
+        console.log(resp);
+        console.log(`${resp.sprites.other.['official-artwork'].front_default};`);
+        const pokemon = {
+          name: resp.name,
+          id: resp.id,
+          img: resp.sprites.other.['official-artwork'].front_default,
+          type: resp.types['0'].type.name,
+        };
+        this.pokemonsData.push(pokemon);
+      }, 1000);
     },
     infiniteScroll() {
       window.onscroll = () => {
