@@ -25,7 +25,7 @@
                 color="orange"
                 outlined
                 v-for="item in pokemon.abilities"
-                :key="item"
+                :key="item.name"
                 >{{ item.ability.name }}</v-chip
               >
             </v-chip-group>
@@ -38,7 +38,7 @@
                 color="green"
                 outlined
                 v-for="item in pokemon.moves"
-                :key="item"
+                :key="item.move.name"
                 >{{ item.move.name }}</v-chip
               >
             </v-chip-group>
@@ -51,7 +51,7 @@
                 color="red"
                 outlined
                 v-for="item in pokemon.types"
-                :key="item"
+                :key="item.name"
                 >{{ item.type.name }}</v-chip
               >
             </v-chip-group>
@@ -80,19 +80,18 @@ export default {
       },
     };
   },
-
-  async mounted() {
-    const apiUrl1 = `https://pokeapi.co/api/v2/pokemon/${this.$route.params.id}`;
-    const apiUrl2 = `https://pokeapi.co/api/v2/pokemon-species/${this.$route.params.id}`;
-    Promise.all([
-      fetch(apiUrl1).then(
-        (res) => (res.ok && res.json()) || Promise.reject(res),
-      ),
-      fetch(apiUrl2).then(
-        (res) => (res.ok && res.json()) || Promise.reject(res),
-      ),
-    ])
-      .then((data) => {
+  methods: {
+    async getDetails() {
+      const apiUrl1 = `https://pokeapi.co/api/v2/pokemon/${this.$route.params.id}`;
+      const apiUrl2 = `https://pokeapi.co/api/v2/pokemon-species/${this.$route.params.id}`;
+      Promise.all([
+        fetch(apiUrl1).then(
+          (res) => (res.ok && res.json()) || Promise.reject(res),
+        ),
+        fetch(apiUrl2).then(
+          (res) => (res.ok && res.json()) || Promise.reject(res),
+        ),
+      ]).then((data) => {
         this.pokemon.img = data[0].sprites.other['official-artwork'].front_default;
         this.pokemon.name = data[0].name.toUpperCase();
         this.pokemon.abilities = data[0].abilities;
@@ -101,12 +100,13 @@ export default {
         this.pokemon.height = data[0].height;
         this.pokemon.moves = data[0].moves;
         this.pokemon.types = data[0].types;
-        this.pokemon.evolves_from_species = data[1].evolves_from_species.name;
-        console.log(data[1]);
-      })
-      .catch((err) => {
-        console.log(err);
+        this.pokemon.evolves_from_species = data[1].evolves_from_species;
       });
+    },
+  },
+  mounted() {
+    this.getDetails();
+    this.$vuetify.theme.dark = true;
   },
 };
 </script>
