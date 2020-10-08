@@ -19,6 +19,9 @@
 import CardPokemon from '@/components/CardPokemon.vue';
 
 export default {
+  props: {
+    itemsPerPage: { String, required: true },
+  },
   components: {
     CardPokemon,
   },
@@ -52,15 +55,16 @@ export default {
         type: resp.types[0].type.name,
       };
     },
-    async getPokemons(itemsPerPage = 24) {
+    async getPokemons() {
       const req = [];
-      const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${this.offset}&&?limit=${itemsPerPage}`).then((res) => res.json());
+      const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${this.offset}&limit=${this.itemsPerPage}`).then((res) => res.json());
       resp.results.forEach((element) => {
         req.push(this.busca(element.url));
       });
       const data = await Promise.allSettled(req);
-      this.offset += itemsPerPage;
+      this.offset += this.itemsPerPage;
       console.log(this.offset);
+      console.log(this.itemsPerPage);
       data.forEach((el) => {
         const pokemon = this.factoryPokemon(el.value);
         this.pokemonsData.push(pokemon);
@@ -90,8 +94,7 @@ export default {
         === document.documentElement.offsetHeight;
 
         if (bottomOfWindow) {
-          console.log('scroll');
-          this.getPokemons(48);
+          this.getPokemons();
         }
       };
     },

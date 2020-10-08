@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <ListPokemons></ListPokemons>
+    <ListPokemons itemsPerPage=30 ></ListPokemons>
   </v-container>
 </template>
 

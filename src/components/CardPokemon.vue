@@ -13,10 +13,10 @@
 export default {
   props: {
     pokemon: {
-      img: String,
-      name: String,
-      id: Number,
-      type: Object,
+      img: { String, required: true },
+      name: { String, required: true },
+      id: { Number, required: true },
+      type: { Object, required: true },
     },
   },
   data() {
