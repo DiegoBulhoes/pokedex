@@ -8,14 +8,7 @@
     <v-row>
     <div v-if="pokemonsData.length === 0">Pokemon Não Existe</div>
     <v-col v-for="pokemon in pokemons" :key="pokemon.id" cols="12" lg="3" sm="4" >
-    <v-card  elevation="50" :color="types[pokemon.type]"
-    @click="getPokemonDetails($event,pokemon)">
-      <div v-if="pokemon.img">
-        <v-img :src="pokemon.img" width=250px height="250px" ></v-img>
-      </div>
-      <div v-else>Imagem não existe</div>
-      <v-card-title >{{ pokemon.name }}</v-card-title>
-    </v-card>
+      <CardPokemon :pokemon="pokemon"></CardPokemon>
       </v-col>
     </v-row>
   </v-container>
@@ -23,33 +16,18 @@
 
 <script>
 // @ is an alias to /src
+import CardPokemon from '@/components/CardPokemon.vue';
 
 export default {
+  components: {
+    CardPokemon,
+  },
   data() {
     return {
       search: '',
       offset: 0,
       pokemonsData: [],
       debounce: null,
-      types: {
-        fire: 'deep-orange darken-2',
-        stell: 'grey lighten-3',
-        dragon: 'orange darken-2',
-        electric: 'yellow darken-3',
-        grass: 'green darken-1',
-        water: 'cyan darken-1',
-        bug: 'light-green lighten-3',
-        normal: 'grey lighten-1',
-        ice: 'blue darken-2',
-        fairy: 'pink lighten-2',
-        poison: 'purple darken-3',
-        ground: 'brown darken-1',
-        fighting: 'red lighten-2',
-        psychic: 'deep-purple lighten-2',
-        rock: 'brown lighten-3',
-        ghost: 'grey darken-1',
-        dark: 'blue-grey darken-4',
-      },
     };
   },
   computed: {
@@ -65,6 +43,15 @@ export default {
     },
   },
   methods: {
+    factoryPokemon(resp) {
+      const name = resp.name.toUpperCase();
+      return {
+        name,
+        id: resp.id,
+        img: resp.sprites.other.['official-artwork'].front_default,
+        type: resp.types[0].type.name,
+      };
+    },
     async getPokemons(itemsPerPage = 24) {
       const req = [];
       const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${this.offset}&&?limit=${itemsPerPage}`).then((res) => res.json());
@@ -75,12 +62,7 @@ export default {
       this.offset += itemsPerPage;
       console.log(this.offset);
       data.forEach((el) => {
-        const pokemon = {};
-        pokemon.id = el.value.id;
-        // eslint-disable-next-line
-        pokemon.img = el.value.sprites.other.['official-artwork'].front_default;
-        pokemon.type = el.value.types['0'].type.name;
-        pokemon.name = el.value.name.toUpperCase();
+        const pokemon = this.factoryPokemon(el.value);
         this.pokemonsData.push(pokemon);
       });
     },
@@ -98,14 +80,7 @@ export default {
       clearTimeout(this.debounce);
       this.debounce = setTimeout(async () => {
         const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`).then((res) => res.json());
-        console.log(resp);
-        console.log(`${resp.sprites.other.['official-artwork'].front_default};`);
-        const pokemon = {
-          name: resp.name,
-          id: resp.id,
-          img: resp.sprites.other.['official-artwork'].front_default,
-          type: resp.types['0'].type.name,
-        };
+        const pokemon = this.factoryPokemon(resp);
         this.pokemonsData.push(pokemon);
       }, 1000);
     },
