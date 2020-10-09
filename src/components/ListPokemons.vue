@@ -20,7 +20,7 @@ import CardPokemon from '@/components/CardPokemon.vue';
 
 export default {
   props: {
-    itemsPerPage: { String, required: true },
+    itemsPerPage: { type: String, required: true, default: '20' },
   },
   components: {
     CardPokemon,
@@ -47,9 +47,8 @@ export default {
   },
   methods: {
     factoryPokemon(resp) {
-      const name = resp.name.toUpperCase();
       return {
-        name,
+        name: resp.name.toUpperCase(),
         id: resp.id,
         img: resp.sprites.other.['official-artwork'].front_default,
         type: resp.types[0].type.name,
