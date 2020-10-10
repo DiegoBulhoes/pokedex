@@ -1,24 +1,42 @@
-# pokedex
+# Pokedex
 
-## Project setup
-```
+Esse repositório tem como objetivo demonstrar a utilização de uma API REST com Vue Js para os alunos da [Faculdade de Computação - UFMS ]('https://www.facom.ufms.br/'). API escolhida foi [Pokeapi](https://pokeapi.co/).
+
+## Iniciar o ambiente
+
+Para iniciar o ambiente será necessário instalar as dependências do projeto, para isso execute o seguinte comando:
+
+```shell
+
 npm install
+
 ```
 
-### Compiles and hot-reloads for development
-```
+Após a instalação será possível executar a aplicação usando o [Docker](https://docker.com/) ou usando o [NPM](https://www.npmjs.com/)
+
+- NPM
+
+```shell
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
+A saída espera será similar a essa:
+
+```text
+
+DONE Compiled successfully in 25799ms 07:00:01
+
+
+App running at:
+
+- Local: http://localhost:8080/
+
+- Network: http://192.168.15.15:8080/
+
+
+Note that the development build is not optimized.
+
+To create a production build, run npm run build.
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Abra o navegador e digite uma da URLs geradas pelo comando anterior
