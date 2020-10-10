@@ -17,6 +17,7 @@ export default {
       name: String,
       id: Number,
       type: Object,
+      required: true,
     },
   },
   data() {
