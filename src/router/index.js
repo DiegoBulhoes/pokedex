@@ -7,12 +7,12 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/pokedex',
+    path: '/',
     name: 'Pokedex',
     component: Pokedex,
   },
   {
-    path: '/pokedex/pokemon/:id',
+    path: '/pokemon/:id',
     name: 'Pokemon',
     component: Pokemon,
   },

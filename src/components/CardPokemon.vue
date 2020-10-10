@@ -1,12 +1,15 @@
 <template>
- <v-card  elevation="50" :color="types[pokemon.type]"
-    @click="getPokemonDetails($event,pokemon)">
-      <div v-if="pokemon.img">
-        <v-img :src="pokemon.img" width=250px height="250px" ></v-img>
-      </div>
-      <div v-else>Imagem não existe</div>
-      <v-card-title >{{ pokemon.name }}</v-card-title>
-    </v-card>
+  <v-card
+    elevation="50"
+    :color="types[pokemon.type]"
+    @click="getPokemonDetails($event, pokemon)"
+  >
+    <div v-if="pokemon.img">
+      <v-img :src="pokemon.img" width="250px" height="250px"></v-img>
+    </div>
+    <div v-else>Imagem não existe</div>
+    <v-card-title>{{ pokemon.name }}</v-card-title>
+  </v-card>
 </template>
 
 <script>
@@ -48,11 +51,8 @@ export default {
       this.$router.push({ name: 'Pokemon', params: { id: pokemon.id } });
     },
   },
-
 };
-
 </script>
 
 <style lang="scss" scoped>
-
 </style>
