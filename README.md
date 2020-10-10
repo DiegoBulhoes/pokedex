@@ -12,7 +12,7 @@ npm install
 
 ```
 
-Após a instalação será possível executar a aplicação usando o [Docker](https://docker.com/) ou usando o [NPM](https://www.npmjs.com/)
+Após a instalação será possível executar a aplicação usando o [Docker](https://docker.com/) ou [NPM](https://www.npmjs.com/)
 
 - NPM
 
@@ -39,4 +39,12 @@ Note that the development build is not optimized.
 To create a production build, run npm run build.
 ```
 
+- Docker
+
+```shell
+docker-compose up -d
+```
+
 Abra o navegador e digite uma da URLs geradas pelo comando anterior
+
+![image](https://github.com/DiegoBulhoes/pokedex/blob/master/image.png)
