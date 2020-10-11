@@ -14,7 +14,7 @@
           <v-card-text>weight: {{ pokemon.weight }} Kg</v-card-text>
           <v-card-text>height: {{ pokemon.height }}</v-card-text>
           <v-card-text v-if="pokemon.evolves_from_species"
-            >evolves_from_species:
+            >evolves from species:
             {{ pokemon.evolves_from_species }}</v-card-text
           >
           <v-card-title>Abilities</v-card-title>
@@ -100,7 +100,7 @@ export default {
         this.pokemon.height = data[0].height;
         this.pokemon.moves = data[0].moves;
         this.pokemon.types = data[0].types;
-        this.pokemon.evolves_from_species = data[1].evolves_from_species;
+        this.pokemon.evolves_from_species = data[1].evolves_from_species.name;
       });
     },
   },
