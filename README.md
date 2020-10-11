@@ -2,6 +2,8 @@
 
 Esse repositório tem como objetivo demonstrar a utilização de uma API REST com Vue Js para os alunos da [Faculdade de Computação - UFMS ]('https://www.facom.ufms.br/'). API escolhida foi [Pokeapi](https://pokeapi.co/).
 
+[![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run)
+
 ## Iniciar o ambiente
 
 Para iniciar o ambiente será necessário instalar as dependências do projeto, para isso execute o seguinte comando:
