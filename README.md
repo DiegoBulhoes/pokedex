@@ -48,7 +48,7 @@ Abra o navegador e digite uma da URLs geradas pelo comando anterior
 docker-compose up -d
 ```
 
-Abra o navegador e digite a seguinr URL
+Abra o navegador e digite a seguir URL
 
 ```text
 http://localhost:8080/
