@@ -3,7 +3,7 @@
   <v-container fluid>
     <v-text-field v-model="search" label="Buscar Pokemon"></v-text-field>
     <v-row>
-      <div v-if="pokemonsData.length === 0">Pokemon Não Existe</div>
+      <div v-if="pokemons.length === 0">Pokemon Não Existe</div>
       <v-col
         v-for="pokemon in pokemons"
         :key="pokemon.id"
