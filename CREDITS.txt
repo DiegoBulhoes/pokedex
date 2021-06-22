@@ -1,0 +1,23 @@
+Seguindo o exemplo do Linus Torvalds no "https://github.com/torvalds/linux/blob/master/CREDITS"
+Este arquivo é responsável por dar os créditos aos participantes.
+A ordem de nome está alfabética.
+
+
+nome: Diego Bulhões Moraes
+email: nao quis informar
+
+
+nome: Fernando Kendy Yahiro
+email: yahirokendy@gmail.com
+
+
+nome: Lucas Sandim
+email: nao quis informar
+
+
+nome: Kaio Mitsuharu Lino Aida
+email: kaiomudkt@gmail.com
+
+
+nome: Vinicius Espindola Ferreira
+email: vinnyaoe@gmail.com
