@@ -14,23 +14,35 @@
       <span class="zelda" @click="ListPokemons">POKEDEX</span>
     </div>
     <v-spacer></v-spacer>
-    <v-switch
+
+      <v-switch
       @change="darkMode"
-      label="Tema Escuro"
+      :label= labelTema
       color="white"
       hide-details
-    ></v-switch>
+      ></v-switch>
+
   </v-app-bar>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      labelTema: 'Tema escuro',
+    };
+  },
   methods: {
     ListPokemons() {
       this.$router.push({ name: 'Pokedex' });
     },
     darkMode() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+      if (this.$vuetify.theme.dark) {
+        this.labelTema = 'Tema escuro';
+      } else {
+        this.labelTema = 'Tema claro';
+      }
     },
   },
 };
