@@ -14,7 +14,7 @@ npm install
 
 ```
 
-Após a instalação será possível executar a aplicação usando o [Docker](https://docker.com/) ou usando o [NPM](https://www.npmjs.com/)
+[![Publish and Build Docker Image](https://github.com/DiegoBulhoes/pokedex/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/DiegoBulhoes/pokedex/actions/workflows/docker-publish.yml)
 
 - NPM
 
