@@ -1,4 +1,4 @@
-name: Docker
+name: Publish and Build Docker Image
 
 on:
   push:
@@ -46,14 +46,14 @@ jobs:
         uses: docker/login-action@v1 
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKER_PUBLISH_IMAGE }}
+          password: ${{ secrets.DOCKER_TOKEN_PUBLISH_IMAGE }}
       -
         name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/hadoop:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/pokedex:latest
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
