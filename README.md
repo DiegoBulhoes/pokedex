@@ -1,5 +1,4 @@
 # Pokedex
-
 Esse repositório tem como objetivo demonstrar a utilização de uma API REST com Vue Js para os alunos da [Faculdade de Computação - UFMS ]('https://www.facom.ufms.br/'). API escolhida foi [Pokeapi](https://pokeapi.co/).
 
 ![image](https://github.com/DiegoBulhoes/pokedex/blob/master/image.png)
