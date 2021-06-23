@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import '@/assets/listButton.css';
+
 export default {
   methods: {
     ListPokemons() {
@@ -35,9 +37,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.zelda {
-  cursor: pointer;
-}
-</style>
