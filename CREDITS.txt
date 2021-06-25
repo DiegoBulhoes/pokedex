@@ -4,21 +4,27 @@ A ordem de nome está alfabética.
 
 Alunos da FACOM/UFMS
 
-nome: Diego Moraes
-e-mail: nao quis informar
+
+nome: Diego Bulhões Moraes
+email: nao quis informar
+curso: Sistemas de Informação
 
 
-nome: Fernando Yahiro
-e-mail: yahirokendy@gmail.com
+nome: Fernando Kendy Yahiro
+email: yahirokendy@gmail.com
+curso: Sistemas de Informação
 
 
 nome: Lucas Sandim
-e-mail: nao quis informar
+email: nao quis informar
+curso: Análise de Sistemas
 
 
-nome: Kaio Aida
-e-mail: kaiomudkt@gmail.com
+nome: Kaio Mitsuharu Lino Aida
+email: kaiomudkt@gmail.com
+curso: Sistemas de Informação
 
 
-nome: Vinicius Ferreira
-e-mail: vinnyaoe@gmail.com
+nome: Vinicius Espindola Ferreira
+email: vinnyaoe@gmail.com
+curso: Sistemas de Informação
