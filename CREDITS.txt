@@ -5,19 +5,24 @@ A ordem de nome está alfabética.
 
 nome: Diego Bulhões Moraes
 email: nao quis informar
+curso: Sistemas de Informação
 
 
 nome: Fernando Kendy Yahiro
 email: yahirokendy@gmail.com
+curso: Sistemas de Informação
 
 
 nome: Lucas Sandim
 email: nao quis informar
+curso: Análise de Sistemas
 
 
 nome: Kaio Mitsuharu Lino Aida
 email: kaiomudkt@gmail.com
+curso: Sistemas de Informação
 
 
 nome: Vinicius Espindola Ferreira
 email: vinnyaoe@gmail.com
+curso: Sistemas de Informação
