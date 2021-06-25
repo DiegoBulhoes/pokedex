@@ -20,8 +20,7 @@
         <v-row md12 class="text-center">
           <v-col md12>
             <p>
-              Criado para a disciplina de Técnicas Avançadas de Desenvolvimento
-              de Sistemas.
+              Sistema de pokedex dos academicos da UFMS/FACOM.
             </p>
             <p>2020 — {{ new Date().getFullYear() }}</p>
           </v-col>
