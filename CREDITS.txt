@@ -2,22 +2,23 @@ Seguindo o exemplo do Linus Torvalds no "https://github.com/torvalds/linux/blob/
 Este arquivo é responsável por dar os créditos aos participantes.
 A ordem de nome está alfabética.
 
+Alunos da FACOM/UFMS
 
-nome: Diego Bulhões Moraes
-email: nao quis informar
+nome: Diego Moraes
+e-mail: nao quis informar
 
 
-nome: Fernando Kendy Yahiro
-email: yahirokendy@gmail.com
+nome: Fernando Yahiro
+e-mail: yahirokendy@gmail.com
 
 
 nome: Lucas Sandim
-email: nao quis informar
+e-mail: nao quis informar
 
 
-nome: Kaio Mitsuharu Lino Aida
-email: kaiomudkt@gmail.com
+nome: Kaio Aida
+e-mail: kaiomudkt@gmail.com
 
 
-nome: Vinicius Espindola Ferreira
-email: vinnyaoe@gmail.com
+nome: Vinicius Ferreira
+e-mail: vinnyaoe@gmail.com
