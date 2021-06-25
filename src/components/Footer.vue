@@ -21,7 +21,7 @@
           <v-col md12>
             <p>
               Criado para a disciplina de Técnicas Avançadas de Desenvolvimento
-              de Sistemas.
+              de Sistemas, ministrada pelo professor Hudson Borges.
             </p>
             <p>2020 — {{ new Date().getFullYear() }}</p>
           </v-col>
