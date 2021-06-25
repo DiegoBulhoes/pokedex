@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import '@/assets/listButton.css';
+
 export default {
   data() {
     return {
@@ -47,9 +49,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.zelda {
-  cursor: pointer;
-}
-</style>
